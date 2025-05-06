@@ -1,0 +1,14 @@
+[project]
+name = "mcp-crowdstrike"
+version = "0.1.0"
+description = "A Model Context Protocol server that connects to CrowdStrike's Falcon API for usage by LLMs"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "CrowdStrike" }]
+maintainers = [{ name = "Carlos Matos", email = "carlos.matos@crowdstrike.com" }]
+keywords = ["mcp", "llm", "security", "intel"]
+license = { text = "MIT" }
+dependencies = [
+    "crowdstrike-falconpy>=1.5.0",
+    "mcp>=1.7.1",
+]
