@@ -221,12 +221,14 @@ source = { virtual = "." }
 dependencies = [
     { name = "crowdstrike-falconpy" },
     { name = "mcp" },
+    { name = "python-dotenv" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "crowdstrike-falconpy", specifier = ">=1.5.0" },
     { name = "mcp", specifier = ">=1.7.1" },
+    { name = "python-dotenv", specifier = ">=1.1.0" },
 ]
 
 [[package]]

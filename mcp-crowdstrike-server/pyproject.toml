@@ -11,4 +11,14 @@ license = { text = "MIT" }
 dependencies = [
     "crowdstrike-falconpy>=1.5.0",
     "mcp>=1.7.1",
+    "python-dotenv>=1.1.0",
 ]
+[project.optional-dependencies]
+test = [
+    "pytest>=7.3.1",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+]
+
+[project.scripts]
+mcp-crowdstrike = "mcp_crowdstrike.server:main"

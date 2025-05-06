@@ -7,10 +7,14 @@ for different Falcon API service collections.
 
 import os
 import logging
+from dotenv import load_dotenv
 from falconpy import OAuth2
 
 # Setup logging
 logger = logging.getLogger('mcp-crowdstrike')
+
+# Load environment variables if .env file exists
+load_dotenv()
 
 # Authentication details from environment variables
 CLIENT_ID = os.environ.get("FALCON_CLIENT_ID")
