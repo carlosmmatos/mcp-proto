@@ -1,7 +1,7 @@
 import os
 import pytest
 from dotenv import load_dotenv
-from falconpy import OAuth2
+from falconpy import OAuth2, Intel
 
 
 def pytest_configure(config):
