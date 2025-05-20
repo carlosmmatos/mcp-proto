@@ -33,7 +33,7 @@ class TestIntelIntegration:
     async def test_get_actor_details_known_actor(self):
         """Test retrieving details for a known threat actor"""
         # Try to get details for a well-known actor
-        # Testing with FANCY BEAR (APT28) which is commonly tracked
+        # Testing with FANCY BEAR which is commonly tracked
         result = await get_actor_details("FANCY BEAR")
 
         # Parse the result

@@ -15,10 +15,6 @@ This server implements the [Model Context Protocol](https://github.com/llm-mcp/m
 
 ## Installation
 
-```bash
-pip install mcp-crowdstrike
-```
-
 For development, you can install directly from the repository:
 
 ```bash
@@ -163,9 +159,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Acknowledgments
 
-- [CrowdStrike Falcon API](https://www.crowdstrike.com/products/threat-intelligence/)
-- [Model Context Protocol](https://github.com/llm-mcp/mcp)
 - [FalconPy SDK](https://github.com/CrowdStrike/falconpy)
+- [Model Context Protocol Python SDK](https://github.com/modelcontextprotocol/python-sdk)
 
 ## Security Considerations
 
