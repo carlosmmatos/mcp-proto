@@ -59,22 +59,11 @@ FALCON_BASE_URL=your-base-url  # Optional
 
 ## Usage
 
-### Running the Server
-
-You can run the server directly using the installed command:
-
-```bash
-mcp-crowdstrike
-```
-
 ### Development Mode
 
 For development and testing, use the MCP development server:
 
 ```bash
-# Install the package in development mode first
-pip install -e .
-
 # Run the development server
 mcp dev mcp_crowdstrike/server.py
 ```
@@ -84,6 +73,20 @@ This will start the MCP Inspector interface, allowing you to interact with the s
 ### Using with LLM Platforms
 
 The server implements the Model Context Protocol, making it compatible with any MCP-enabled LLM platform. Refer to your LLM platform's documentation for instructions on connecting to MCP servers.
+
+> An example YAML configuration tested with VSCode continue.dev plugin
+
+```yaml
+mcpServers:
+  - name: Falcon MCP
+    command: uv
+    args:
+      - run
+      - --env-file=/path/to/your/.env
+      - --directory
+      - /path/to/your/mcp-crowdstrike-server
+      - mcp-crowdstrike
+```
 
 ## Available Tools
 

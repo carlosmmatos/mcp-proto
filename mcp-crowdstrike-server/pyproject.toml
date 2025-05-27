@@ -10,7 +10,7 @@ keywords = ["mcp", "llm", "security", "intel"]
 license = { text = "MIT" }
 dependencies = [
     "crowdstrike-falconpy>=1.5.0",
-    "mcp>=1.7.1",
+    "mcp[cli]>=1.4.1",
     "python-dotenv>=1.1.0",
 ]
 [project.optional-dependencies]
@@ -22,6 +22,10 @@ test = [
 
 [project.scripts]
 mcp-crowdstrike = "mcp_crowdstrike.server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.pytest.ini_options]
 asyncio_mode = "strict"
