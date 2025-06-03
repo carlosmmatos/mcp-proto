@@ -9,9 +9,12 @@ This server implements the [Model Context Protocol](https://github.com/llm-mcp/m
 ## Features
 
 - Connect to CrowdStrike Falcon Intelligence API
-- Retrieve threat intelligence data
-- Search for indicators of compromise (IOCs)
+- Retrieve and analyze threat actor information
+- Search for and analyze indicators of compromise (IOCs) with multiple filtering options
+- Get IOCs associated with specific threat actors
+- Track recently published threat intelligence
 - Access security insights for AI-assisted analysis
+- Comprehensive error handling with permission guidance
 
 ## Installation
 
@@ -34,6 +37,18 @@ pip install -e ".[test]"
 - Python 3.12 or higher
 - CrowdStrike Falcon API credentials
 - Access to CrowdStrike Intelligence modules (for full functionality)
+
+### Dependencies
+
+- crowdstrike-falconpy >= 1.5.0
+- mcp[cli] >= 1.4.1
+- python-dotenv >= 1.1.0
+
+For testing:
+
+- pytest >= 7.3.1
+- pytest-asyncio >= 0.21.0
+- pytest-cov >= 4.1.0
 
 ## Configuration
 
@@ -59,17 +74,6 @@ FALCON_BASE_URL=your-base-url  # Optional
 
 ## Usage
 
-### Development Mode
-
-For development and testing, use the MCP development server:
-
-```bash
-# Run the development server
-mcp dev mcp_crowdstrike/server.py
-```
-
-This will start the MCP Inspector interface, allowing you to interact with the server and test its functionality.
-
 ### Using with LLM Platforms
 
 The server implements the Model Context Protocol, making it compatible with any MCP-enabled LLM platform. Refer to your LLM platform's documentation for instructions on connecting to MCP servers.
@@ -88,12 +92,32 @@ mcpServers:
       - mcp-crowdstrike
 ```
 
+### Development Mode
+
+For development and testing, use the MCP development server:
+
+```bash
+# Run the development server
+mcp dev mcp_crowdstrike/server.py
+```
+
+This will start the MCP Inspector interface, allowing you to interact with the server and test its functionality.
+
 ## Available Tools
 
 ### Intelligence Tools
 
-- `list_threat_actors`: Retrieve a list of threat actors tracked by CrowdStrike
-- `get_actor_details`: Get detailed information about a specific threat actor
+#### Threat Actor Tools
+
+- `list_threat_actors`: Retrieve a list of threat actors tracked by CrowdStrike. Returns actor IDs, names, and other basic information.
+- `get_actor_details`: Get detailed information about a specific threat actor by name, including capabilities, motivations, and attribution details.
+
+#### IOC Tools
+
+- `search_iocs`: Search for Indicators of Compromise (IOCs) with various filters including indicator value, type, malware family, threat type, confidence level, and MITRE ATT&CK techniques.
+- `get_ioc_details`: Get comprehensive information about a specific IOC by its value (hash, IP, domain, etc.), including associated malware families, threat types, and MITRE techniques.
+- `get_actor_iocs`: Retrieve IOCs associated with a specific threat actor, organized by indicator type for easier analysis.
+- `get_recent_iocs`: Get recently published IOCs within a specified time period (default: last 7 days), helping security teams stay current with emerging threats.
 
 ## Development
 
@@ -141,8 +165,8 @@ The tests require valid CrowdStrike API credentials to be available in environme
 
 Different tools require different CrowdStrike API permissions. Ensure your API client has the necessary scopes:
 
-- Intelligence tools: `ACTORS (FALCON INTELLIGENCE) READ`
-- IOC tools: `IOC READ`
+- Threat Actor tools: `ACTORS (FALCON INTELLIGENCE) READ`
+- IOC tools: `INDICATORS (FALCON INTELLIGENCE) READ`
 
 If you encounter permission errors, the server will provide guidance on which permissions are required.
 
