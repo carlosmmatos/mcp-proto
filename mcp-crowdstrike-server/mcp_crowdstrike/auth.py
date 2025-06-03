@@ -8,7 +8,7 @@ for different Falcon API service collections.
 import os
 import logging
 from dotenv import load_dotenv
-from falconpy import OAuth2
+from falconpy import OAuth2, InvalidCredentials
 
 # Setup logging
 logger = logging.getLogger('mcp-crowdstrike')
@@ -38,4 +38,7 @@ if BASE_URL:
 
 # Initialize OAuth2 authentication
 falcon_auth = OAuth2(creds=creds)
+falcon_auth.login()
+if not falcon_auth.token_valid:
+    raise InvalidCredentials(message="Invalid credentials supplied. Could not authenticate with the API.")
 logger.info("CrowdStrike Falcon authentication initialized")
