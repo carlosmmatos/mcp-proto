@@ -2,11 +2,13 @@
 Tools for interacting with the CrowdStrike Intel Service.
 """
 
+from datetime import datetime, timedelta
 import json
 import logging
 from falconpy import Intel
 from mcp_crowdstrike.auth import falcon_auth
-from mcp_crowdstrike.server import mcp, format_response
+from mcp_crowdstrike.server import mcp
+from mcp_crowdstrike.utils import format_response
 
 # Configure logging
 logger = logging.getLogger("mcp-crowdstrike")
@@ -66,7 +68,7 @@ async def get_actor_details(actor_name: str) -> str:
         actor = actors[0]  # Take the first match
         return json.dumps({"actor": actor}, indent=2)
     except Exception as e:
-        logger.exception(f"Error getting actor details for '{actor_name}'")
+        logger.exception("Error getting actor details for '%s'", actor_name)
         return f"Error: {str(e)}"
 
 
@@ -174,7 +176,7 @@ async def get_ioc_details(indicator_value: str) -> str:
 
         return json.dumps({"ioc_details": details}, indent=2)
     except Exception as e:
-        logger.exception(f"Error getting IOC details for '{indicator_value}'")
+        logger.exception("Error getting IOC details for '%s'", indicator_value)
         return f"Error: {str(e)}"
 
 
@@ -219,7 +221,7 @@ async def get_actor_iocs(actor_name: str, limit: int = 20) -> str:
             indent=2,
         )
     except Exception as e:
-        logger.exception(f"Error getting IOCs for actor '{actor_name}'")
+        logger.exception("Error getting IOCs for actor '%s'", actor_name)
         return f"Error: {str(e)}"
 
 
@@ -233,8 +235,6 @@ async def get_recent_iocs(days: int = 7, limit: int = 20) -> str:
         limit: Maximum number of IOCs to return (default: 20)
     """
     try:
-        from datetime import datetime, timedelta
-
         # Calculate the date threshold
         threshold_date = datetime.now() - timedelta(days=days)
         date_filter = threshold_date.strftime("%Y-%m-%d")
@@ -276,5 +276,5 @@ async def get_recent_iocs(days: int = 7, limit: int = 20) -> str:
             indent=2,
         )
     except Exception as e:
-        logger.exception(f"Error getting recent IOCs")
+        logger.exception("Error getting recent IOCs")
         return f"Error: {str(e)}"
