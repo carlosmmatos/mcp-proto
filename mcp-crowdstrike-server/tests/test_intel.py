@@ -49,7 +49,7 @@ class TestIntelIntegration:
             assert "actor" in data
             actor = data["actor"]
             assert actor["name"] == "FANCY BEAR"
-            print(f"Successfully retrieved details for FANCY BEAR")
+            print("Successfully retrieved details for FANCY BEAR")
         except json.JSONDecodeError:
             # If we got a string response and not JSON, it might be "No actor details found"
             # This could happen if the account doesn't have access to this actor

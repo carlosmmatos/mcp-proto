@@ -17,7 +17,6 @@ logger = logging.getLogger("mcp-crowdstrike")
 mcp = FastMCP("CrowdStrike MCP")
 logger.info("MCP server initialized")
 
-
 # Import tools (after mcp is defined)
 from mcp_crowdstrike.tools import *
 
