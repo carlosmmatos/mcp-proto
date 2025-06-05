@@ -5,7 +5,7 @@ A Model Context Protocol server that connects to CrowdStrike's Falcon API
 and exposes various API capabilities through MCP.
 """
 
-# pylint: disable=wildcard-import,wrong-import-position
+# pylint: disable=unused-wildcard-import,wildcard-import,wrong-import-position
 import logging
 from mcp.server.fastmcp import FastMCP
 
