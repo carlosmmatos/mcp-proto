@@ -53,5 +53,4 @@ body:
     id: additional_context
     attributes:
       label: Additional context (optional)
-      description: Let us know anything else that may help.
-      placeholder: "What steps have you already taken or what have you tried?"
+      description: Any additional information or logs you think might help.
