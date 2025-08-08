@@ -12,7 +12,7 @@ body:
     id: question_module
     attributes:
       label: Which module is your question about?
-      description: Select the module related to your question. If not module related, select "General/Not module-specific"
+      description: If not module related, select "General/Not module-specific"
       options:
         - General/Not module-specific
         - Cloud
@@ -35,13 +35,6 @@ body:
     validations:
       required: true
 
-  - type: textarea
-    id: what_tried
-    attributes:
-      label: What have you tried? (optional)
-      description: Let us know what you've already attempted.
-      placeholder: "What steps have you already taken or what have you tried?"
-
   - type: input
     id: version
     attributes:
@@ -54,4 +47,11 @@ body:
     attributes:
       label: How/where are you running this? (optional)
       description: Describe your setup and deployment method if relevant.
-      placeholder: "e.g., Local Python install on macOS, Docker on Ubuntu server, pip install on Windows"
+      placeholder: "e.g., package install (via Pypi) on macOS, Docker on Ubuntu server, pip install on Windows"
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional context (optional)
+      description: Let us know anything else that may help.
+      placeholder: "What steps have you already taken or what have you tried?"
