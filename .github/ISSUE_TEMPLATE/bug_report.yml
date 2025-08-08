@@ -1,0 +1,105 @@
+name: Bug Report
+description: Report a bug or unexpected behavior
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug! Please provide the details below to help us understand and fix the issue.
+
+  - type: dropdown
+    id: affected_module
+    attributes:
+      label: Which module is affected?
+      description: Select the module where you encountered the issue.
+      options:
+        - Not module-specific
+        - Cloud (Kubernetes, containers)
+        - Detections (alerts, malicious activity)
+        - Hosts (device/host management)
+        - IDP (Identity Protection)
+        - Incidents (incident management, behaviors)
+        - Intel (threat intelligence)
+        - Sensor Usage (sensor data analytics)
+        - Spotlight (vulnerability management)
+    validations:
+      required: true
+
+  - type: textarea
+    id: what_happened
+    attributes:
+      label: What happened?
+      description: Describe the bug or unexpected behavior you encountered.
+      placeholder: "Now that you've selected the module above, describe what went wrong..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Provide clear steps to reproduce the issue.
+      placeholder: |
+        1. Start the server with...
+        2. Run this command...
+        3. See error...
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+      placeholder: "What should have happened instead?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual_behavior
+    attributes:
+      label: Actual behavior
+      description: What actually happened?
+      placeholder: "What actually happened?"
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Falcon MCP Server version
+      description: What version are you using?
+      placeholder: "e.g., v0.1.0, latest"
+    validations:
+      required: true
+
+  - type: input
+    id: python_version
+    attributes:
+      label: Python version
+      description: What Python version are you using?
+      placeholder: "e.g., 3.11.0"
+    validations:
+      required: true
+
+  - type: input
+    id: deployment_context
+    attributes:
+      label: How/where are you running this?
+      description: Describe your setup and deployment method.
+      placeholder: "e.g., Local Python install on macOS, Docker on Ubuntu server, pip install on Windows"
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log output (optional)
+      description: Paste any relevant log output here.
+      placeholder: "Paste log output here..."
+      render: shell

@@ -1,0 +1,57 @@
+name: General Question
+description: Ask a question or get help
+title: "[Question]: "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reaching out! Please provide your question below and we'll help you out.
+
+  - type: dropdown
+    id: question_module
+    attributes:
+      label: Which module is your question about?
+      description: Select the module related to your question. If not module related, select "General/Not module-specific"
+      options:
+        - General/Not module-specific
+        - Cloud
+        - Detections
+        - Hosts
+        - IDP
+        - Incidents
+        - Intel
+        - Sensor Usage
+        - Spotlight
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: What's your question?
+      description: Describe what you need help with.
+      placeholder: "what do you need help with?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: what_tried
+    attributes:
+      label: What have you tried? (optional)
+      description: Let us know what you've already attempted.
+      placeholder: "What steps have you already taken or what have you tried?"
+
+  - type: input
+    id: version
+    attributes:
+      label: Falcon MCP Server version (optional)
+      description: What version are you using?
+      placeholder: "e.g., v0.1.0, latest"
+
+  - type: input
+    id: deployment_context
+    attributes:
+      label: How/where are you running this? (optional)
+      description: Describe your setup and deployment method if relevant.
+      placeholder: "e.g., Local Python install on macOS, Docker on Ubuntu server, pip install on Windows"

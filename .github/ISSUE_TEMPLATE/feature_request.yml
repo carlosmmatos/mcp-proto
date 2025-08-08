@@ -1,0 +1,62 @@
+name: Feature Request
+description: Request a new feature, module, or tool
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new feature! Please provide the details below to help us understand your request.
+
+  - type: dropdown
+    id: feature_type
+    attributes:
+      label: Feature type
+      description: What type of feature are you requesting?
+      options:
+        - New Tool
+        - New Module
+        - General Enhancement
+    validations:
+      required: true
+
+  - type: dropdown
+    id: target_module
+    attributes:
+      label: Which module? (for New Tool requests)
+      description: If requesting a new tool, which module should it be added to?
+      options:
+        - Not applicable
+        - Cloud (Kubernetes, containers)
+        - Detections (alerts, malicious activity)
+        - Hosts (device/host management)
+        - IDP (Identity Protection)
+        - Incidents (incident management, behaviors)
+        - Intel (threat intelligence)
+        - Sensor Usage (sensor data analytics)
+        - Spotlight (vulnerability management)
+
+  - type: input
+    id: new_module_name
+    attributes:
+      label: New module name (for New Module requests)
+      description: If requesting a new module, what should it be called?
+      placeholder: "e.g., forensics, compliance, configuration-assessment"
+
+  - type: textarea
+    id: feature_description
+    attributes:
+      label: What feature do you want?
+      description: Describe the specific feature, tool, or enhancement you'd like to see added.
+      placeholder: "Now that you've selected the type/module above, describe the specific feature..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: why_needed
+    attributes:
+      label: Why do you need this feature?
+      description: Explain the use case or problem this feature would solve.
+      placeholder: "What problem does this solve? How would it help you?"
+    validations:
+      required: true
